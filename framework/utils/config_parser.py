@@ -7,7 +7,8 @@ class ConfigParser(metaclass=Singleton):
     config = None
 
     def open_config(self):
-        with open('C:\\Users\\User\\Desktop\\second_lvl\\tests\\config\\config.json', 'r') as fd:
+        with open('C:\\Users\\User\\Desktop\\second_lvl\\tests\\config\\config.json', 'r',
+                  encoding='utf-8') as fd:
             self.config = json.load(fd)
 
     def get_config(self):

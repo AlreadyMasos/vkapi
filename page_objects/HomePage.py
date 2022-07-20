@@ -11,7 +11,7 @@ class HomePage(BasePage):
         super().__init__('xpath', self._no_button_path, 'home page')
 
     def check_load_home_page(self):
-        super().is_opened()
+        return super().is_opened()
 
     def click_start_button(self):
         self.start_button.click()
