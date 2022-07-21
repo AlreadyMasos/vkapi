@@ -7,9 +7,9 @@ def set_random_string():
     return random_string
 
 
-def validate_timer_string(string):
-    return True if string == '00:00:00' else False
+def validate_timer_string(string, current_string):
+    return string == current_string
 
 
 def validate_card(card_num, real_card_num):
-    return True if card_num in real_card_num else False
+    return card_num in real_card_num

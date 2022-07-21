@@ -3,7 +3,7 @@ from framework.elements.text import Text
 from framework.utils.string_util import validate_card
 
 
-class ThirdPage(BasePage):
+class InfoForm(BasePage):
     _page_ind = ('xpath', "//div[@class='page-indicator']", 'ind')
 
     page_ind_text = Text(*_page_ind)

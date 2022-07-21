@@ -33,8 +33,8 @@ def random_list_element(given_list, count):
     return result_list
 
 
-def generate_random_list(size):
+def generate_random_int_list(size, right_border):
     random_list = list()
     for i in range(size):
-        random_list.append(random.randint(0, 2))
+        random_list.append(random.randint(0, right_border))
     return random_list

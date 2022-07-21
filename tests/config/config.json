@@ -8,9 +8,6 @@
   "explicitly_wait_sec": 10,
   "autoit_wait_sec" : 2,
   "main_url" : "https://userinyerface.com/",
-  "password" : "bigBOИ1best",
-  "email" : "bodya",
-  "domain" : "super",
   "pic_path" : "C:\\Users\\User\\Desktop\\second_lvl\\resourses\\picture.png",
   "win_handle" : "Открытие"
 }

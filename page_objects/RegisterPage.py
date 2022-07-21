@@ -8,10 +8,11 @@ from framework.utils.config_parser import ConfigParser
 from framework.utils.random_util import get_random_password_and_email
 from framework.utils.string_util import validate_timer_string, validate_card
 from page_objects.FileForm import FileForm
+from page_objects.InfoForm import InfoForm
 
 
 class RegisterPage(BasePage):
-    
+
     CONFIG = ConfigParser().get_config()
     _timer = ('xpath', '//div[@class="timer timer--white timer--center"]', 'cards')
 
@@ -31,6 +32,8 @@ class RegisterPage(BasePage):
 
     def __init__(self):
         super().__init__(*self._timer)
+        self.file_form = FileForm()
+        self.info_form = InfoForm()
 
     def fill_form(self):
         password, email, domain = get_random_password_and_email()

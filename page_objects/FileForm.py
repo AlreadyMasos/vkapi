@@ -7,7 +7,7 @@ from framework.utils.string_util import validate_card
 from framework.utils.random_util import random_list_element
 
 
-class FilePage(BasePage):
+class FileForm(BasePage):
     _upload_button = ('xpath', '//a[@class="avatar-and-interests__upload-button"]', 'upload')
     _page_ind = ('xpath', "//div[@class='page-indicator']", 'ind')
     _interests_loc = ('xpath', '//div[@class="avatar-and-interests__interests-list__item"]','interests')
