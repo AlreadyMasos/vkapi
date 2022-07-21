@@ -8,6 +8,5 @@
   "explicitly_wait_sec": 10,
   "autoit_wait_sec" : 2,
   "main_url" : "https://userinyerface.com/",
-  "pic_path" : "C:\\Users\\User\\Desktop\\second_lvl\\resourses\\picture.png",
   "win_handle" : "Открытие"
 }

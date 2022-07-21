@@ -7,6 +7,7 @@ from framework.elements.form import Form
 from framework.utils.config_parser import ConfigParser
 from framework.utils.random_util import get_random_password_and_email
 from framework.utils.string_util import validate_timer_string, validate_card
+from framework.utils.dataset_parser import DataSetParser
 from page_objects.FileForm import FileForm
 from page_objects.InfoForm import InfoForm
 
@@ -14,6 +15,7 @@ from page_objects.InfoForm import InfoForm
 class RegisterPage(BasePage):
 
     CONFIG = ConfigParser().get_config()
+    DATASET = DataSetParser().get_dataset()['cards_test']
     _timer = ('xpath', '//div[@class="timer timer--white timer--center"]', 'cards')
 
     password_textbox = TextBox('xpath', "//input[@placeholder='Choose Password']", 'pass')
@@ -25,9 +27,12 @@ class RegisterPage(BasePage):
     next_button = Button('xpath', '//a[@class="button--secondary"]', 'next_btn')
     org_button = Button('xpath', "//div[text()='.org']", 'org')
     timer = TextBox(*_timer)
-    accept_cookie_button = Button('xpath', '//button[@class="button button--solid button--transparent"]', 'cookie_accept')
+    accept_cookie_button = Button('xpath', '//button[@class="button button--solid button--transparent"]',
+                                  'cookie_accept')
     cookie_form = TextBox('xpath', '//p[@class="cookies__message"]', 'cookie_form')
-    help_button = Button('xpath', '//button[@class="button button--solid button--blue help-form__send-to-bottom-button"]', 'help')
+    help_button = Button('xpath',
+                         '//button[@class="button button--solid button--blue help-form__send-to-bottom-button"]',
+                         'help')
     help_form = Form('xpath', '//div[@class="help-form__container"]', 'help_form')
 
     def __init__(self):
@@ -50,10 +55,10 @@ class RegisterPage(BasePage):
         self.next_button.click()
 
     def check_card_first(self):
-        return validate_card('1', self.page_ind_text.get_text())
+        return validate_card(self.DATASET['first_validate'], self.page_ind_text.get_text())
 
     def validate_timer(self):
-        return validate_timer_string(self.timer.get_text())
+        return validate_timer_string(self.timer.get_text(),self.DATASET['validate_timer'])
 
     def cookie_accept(self):
         self.accept_cookie_button.click()

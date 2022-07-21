@@ -7,7 +7,7 @@ class DataSetParser(metaclass=Singleton):
     dataset = None
 
     def open_dataset(self):
-        with open('tests/test_data/test_data.json', 'r') as fd:
+        with open(r'tests/test_data/test_data.json', 'r') as fd:
             self.dataset = json.load(fd)
 
     def get_dataset(self):
