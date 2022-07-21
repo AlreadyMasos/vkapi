@@ -1,5 +1,7 @@
 {"cards_test": {
   "first_validate" : "1",
   "second_validate" : "2",
-  "timer_validate" : "00:00:00"
+  "third_validate" : "3",
+  "timer_validate" : "00:00:00",
+  "pic_path" : "/tests/test_data/picture.png"
 }}

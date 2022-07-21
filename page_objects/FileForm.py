@@ -25,8 +25,6 @@ class FileForm(BasePage):
 
     def upload_file(self):
         self.upload_btn.click()
-        auto = AutoItUtils()
-        auto.upload_image()
 
     def click_checks(self):
         for check in self.all_inters.get_elements():

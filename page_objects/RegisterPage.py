@@ -5,7 +5,6 @@ from framework.elements.checkbox import CheckBox
 from framework.elements.button import Button
 from framework.elements.form import Form
 from framework.utils.config_parser import ConfigParser
-from framework.utils.random_util import get_random_password_and_email
 from framework.utils.string_util import validate_timer_string, validate_card
 from framework.utils.dataset_parser import DataSetParser
 from page_objects.FileForm import FileForm
@@ -40,8 +39,7 @@ class RegisterPage(BasePage):
         self.file_form = FileForm()
         self.info_form = InfoForm()
 
-    def fill_form(self):
-        password, email, domain = get_random_password_and_email()
+    def fill_form(self, password, email, domain):
         self.password_textbox.clear_field()
         self.password_textbox.send_text(password)
         self.email_textbox.clear_field()
@@ -58,7 +56,7 @@ class RegisterPage(BasePage):
         return validate_card(self.DATASET['first_validate'], self.page_ind_text.get_text())
 
     def validate_timer(self):
-        return validate_timer_string(self.timer.get_text(),self.DATASET['validate_timer'])
+        return validate_timer_string(self.timer.get_text(), self.DATASET['validate_timer'])
 
     def cookie_accept(self):
         self.accept_cookie_button.click()
