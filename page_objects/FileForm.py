@@ -23,7 +23,7 @@ class FileForm(BasePage):
     def check_number(self):
         return validate_card(self.DATASET['second_validate'], self.text_card.get_text())
 
-    def upload_file(self):
+    def click_upload_file_button(self):
         self.upload_btn.click()
 
     def click_checks(self):
