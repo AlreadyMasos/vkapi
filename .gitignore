@@ -140,4 +140,7 @@ dmypy.json
 ../task6
 /framework
 /page_objects
-/tests
+
+/tests/
+/page_objects/
+/framework/
