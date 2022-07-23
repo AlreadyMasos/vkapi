@@ -138,3 +138,6 @@ dmypy.json
 ../task3
 ../task5
 ../task6
+/framework
+/page_objects
+/tests
