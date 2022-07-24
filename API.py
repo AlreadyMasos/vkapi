@@ -1,7 +1,7 @@
 import requests
 from utils.chekcers import check_sorted_by, check_if_json, check_post, empty_check
 from utils.random_utils import create_random_string
-from Post import Post
+from entitys.Post import Post
 
 
 class Request:
