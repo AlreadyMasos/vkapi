@@ -12,4 +12,6 @@ def test_step():
     resp = Request('get', 'https://jsonplaceholder.typicode.com/posts/150')
     assert resp.check_empty()
     assert resp.status_code_check(404)
+    resp = Request('post', 'https://jsonplaceholder.typicode.com/posts/')
+    assert resp.check_correct_post() and resp.status_code_check(201)
 

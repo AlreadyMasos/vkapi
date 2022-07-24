@@ -6,7 +6,6 @@ class Post:
         self.user_id = json['userId']
         self.title = json['title']
         self.body = json['body']
-        print(self.__dict__)
 
     def __eq__(self, other):
         return (self.title == other.title
