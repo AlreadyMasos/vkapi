@@ -18,8 +18,14 @@ class Request:
                          'userId': '1'}
             self.resp = requests.post(link, data=self.data)
 
-    def status_code_check(self, code_number):
-        return self.resp.status_code == code_number
+    def check_code_200(self):
+        return self.resp.status_code == 200
+
+    def check_code_404(self):
+        return self.resp.status_code == 404
+
+    def check_code_201(self):
+        return self.resp.status_code == 201
 
     def get_json(self):
         return self.resp.json()
