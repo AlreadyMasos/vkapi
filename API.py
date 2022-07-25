@@ -24,8 +24,8 @@ class Request:
     def get_json(self):
         return self.resp.json()
 
-    def check_if_sorted(self, param):
-        return check_sorted_by(self.resp, param)
+    def check_if_sorted_by_id(self):
+        return check_sorted_by(self.resp, 'id')
 
     def check_if_json(self):
         return check_if_json(self.resp)
@@ -47,4 +47,3 @@ class Request:
     def find_user_by_id(self, number):
         listed = self.get_json()
         return listed[number-1]
-

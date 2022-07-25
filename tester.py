@@ -5,7 +5,7 @@ def test_step():
     resp = Request('get', 'https://jsonplaceholder.typicode.com/posts/')
     assert resp.status_code_check(200)
     assert resp.check_if_json()
-    assert resp.check_if_sorted('id')
+    assert resp.check_if_sorted_by_id()
     resp = Request('get', 'https://jsonplaceholder.typicode.com/posts/99')
     assert resp.status_code_check(200)
     assert resp.check_99_post()
