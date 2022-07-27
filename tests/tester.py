@@ -1,11 +1,10 @@
-from entitys.API import Request
+from framework.API import API
 from framework.utils.cfg_parser import ConfigParser
 
 
 def test_step():
     cfg = ConfigParser().get_config()
     resp_first = Request(*cfg['first_req'])
-    assert resp_first.check_code_200(), 'wrong code'
     assert resp_first.check_if_json(), 'not json'
     assert resp_first.check_if_sorted_by_id(), 'not sorted by id'
     resp_second = Request(*cfg['second_req'])

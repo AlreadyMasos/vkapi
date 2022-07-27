@@ -1,10 +1,4 @@
 {
-  "first_req" : ["get","https://jsonplaceholder.typicode.com/posts/"],
-  "second_req" : ["get", "https://jsonplaceholder.typicode.com/posts/99"],
-  "third_req" : ["get", "https://jsonplaceholder.typicode.com/posts/150"],
-  "fourth_req" : ["post", "https://jsonplaceholder.typicode.com/posts/"],
-  "fifth_req" : ["get", "https://jsonplaceholder.typicode.com/users/"],
-  "sixth_req" : ["get", "https://jsonplaceholder.typicode.com/users/5"],
+  "base_url" : "https://jsonplaceholder.typicode.com/",
   "user_id" : 5
-
 }
