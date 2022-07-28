@@ -18,11 +18,10 @@ class PostApi(API):
     def get_post_99(self):
         self.get(self.ENDPOINT + '99')
 
-    def get_post_150(self):
+    def get_post_150(self, status_code=400):
         self.get(self.ENDPOINT + '150')
-        expected = 404
         real = self.get_status_code()
-        assert real == expected, f'{real} != {expected}'
+        assert real == status_code, f'{real} != {status_code}'
 
     def check_99_post(self):
         real_post = Post(self.DATA['post'])
