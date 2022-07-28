@@ -9,7 +9,7 @@ CONFIG = ConfigParser().get_config()
 def pytest_session_start():
     browser = Browser()
     browser.set_up_driver()
-    browser.set_url(url=CONFIG['main_url'])
+    browser.set_url(url=CONFIG['base_url'])
 
 
 @pytest.fixture(scope='session')

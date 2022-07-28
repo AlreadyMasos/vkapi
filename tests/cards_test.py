@@ -1,7 +1,7 @@
 from page_objects.HomePage import HomePage
 from page_objects.RegisterPage import RegisterPage
-from framework.Steps.Steps import Steps
-from framework.utils.random_util import get_random_password_and_email
+from framework_UI.Steps.Steps import Steps
+from framework_UI.utils.random_util import get_random_password_and_email
 
 
 def test_case_cards(pytest_session_start, pytest_session_finish):
