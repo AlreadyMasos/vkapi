@@ -12,10 +12,10 @@ class API:
         self._response = None
 
     def get(self, endpoint):
-        self._response = requests.get(url=self.cfg['base_url' + endpoint])
+        self._response = requests.get(self.cfg['base_url'] + endpoint)
 
     def post(self, endpoint, data=None):
-        self._response = requests.post(url=self.cfg['base_url']+endpoint, data=data.__dict__)
+        self._response = requests.post(url=self.cfg['base_url']+endpoint, data=data)
 
     def get_status_code(self):
         return self._response.status_code

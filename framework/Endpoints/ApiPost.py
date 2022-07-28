@@ -6,10 +6,10 @@ from entitys.Post import Post
 
 class PostApi(API):
     DATA = DataSetParser().get_dataset()
-    ENDPOINT = 'posts/'
+    ENDPOINT = '/posts/'
     data = random_data_generator()
 
-    def get_post(self):
+    def get_posts(self):
         self.get(self.ENDPOINT)
         expected = 200
         real = self.get_status_code()
@@ -30,7 +30,7 @@ class PostApi(API):
         return real_post == current_post
 
     def check_correct_post_req(self):
-        expected = 201
-        real = self.get_status_code()
-        assert real == expected, f'{real} != {expected}'
         return Post(self.get_json()) == Post(self.data)
+
+    def create_post(self):
+        self.post(self.ENDPOINT, data=self.data)
