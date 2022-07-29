@@ -1,4 +1,4 @@
-from framework.API import API
+from framework.API.API import API
 from framework.utils.data_parser import DataSetParser
 from framework.utils.random_utils import random_data_generator
 from entitys.Post import Post

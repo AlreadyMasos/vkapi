@@ -1,9 +1,11 @@
 from framework.pages.base_page import BasePage
 from framework.elements.button import Button
+from framework.elements.text import Text
+from framework.utils.cfg_parser import ConfigParser
 
 
 class MyPage(BasePage):
-
+    cfg = ConfigParser().get_config()
     all_posts_button = Button('xpath', '//li[@class="_wall_tab_all"]', 'all_posts_button')
 
     def __init__(self):
@@ -13,3 +15,11 @@ class MyPage(BasePage):
 
     def click_my_page_button(self):
         self.all_posts_button.click()
+
+    def check_created_post(self, post_id):
+        try:
+            post_with_id = Text('xpath', f'//div[@id="wpt{self.cfg["owner_id"]}_{post_id[0]}"]',"post_with_id]")
+            post_with_id.wait_for_is_visible()
+            return post_with_id.is_displayed() and post_id[1] == post_with_id.get_text()
+        except Exception:
+            return False
