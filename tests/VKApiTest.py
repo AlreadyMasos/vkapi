@@ -20,6 +20,7 @@ def test(pytest_session_start):
     my_page = MyPage()
     assert my_page.is_opened()
     req = VKApiUtils()
-    post_id = req.create_post()
-    assert my_page.check_created_post(post_id)
+    post_info = req.create_post()
+    assert my_page.check_created_post(post_info)
+    req.edit_post(post_info[0])
 
