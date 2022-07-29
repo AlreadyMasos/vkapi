@@ -22,5 +22,6 @@ def test(pytest_session_start):
     req = VKApiUtils()
     post_info = req.create_post()
     assert my_page.check_created_post(post_info)
-    req.edit_post(post_info[0])
-
+    new_mes = req.edit_post(post_info[0])
+    #assert my_page.check_edited_post(post_info, new_mes)
+    req.create_post_comment(post_info[0])

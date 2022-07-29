@@ -15,12 +15,17 @@ class API:
     def get(self, endpoint):
         self._response = requests.get(self.cfg['base_url_api'] + endpoint)
 
-    def post(self, method, access_token, owner_id, message, v, post_id=''):
+    def post(self, method, access_token, owner_id, message, v, post_id='', attachment=''):
         if post_id == '':
             self._response = requests.post(url=f'{self.cfg["base_url_api"]}{method}?owner_id={owner_id}&'
                                            f'access_token={access_token}&message={message}&v={v}')
         else:
-            self._response = requests.post(url=f'{self.cfg["base_url_api"]}{method}?owner_id={owner_id}&'
+            if attachment != '':
+                self._response = requests.post(url=f'{self.cfg["base_url_api"]}{method}?owner_id={owner_id}&'
+                                               f'access_token={access_token}&message={message}&v={v}&post_id={post_id}'
+                                               f'&attachments=photo{attachment[0]}_{attachment[1]}')
+            else:
+                self._response = requests.post(url=f'{self.cfg["base_url_api"]}{method}?owner_id={owner_id}&'
                                                f'access_token={access_token}&message={message}&v={v}&post_id={post_id}')
 
     def get_status_code(self):
