@@ -12,8 +12,9 @@ class API:
     def __init__(self):
         self._response = None
 
-    def get(self, endpoint):
-        self._response = requests.get(self.cfg['base_url_api'] + endpoint)
+    def get(self, method, access_token, owner_id, v, post_id):
+        self._response = requests.get(url=f'{self.cfg["base_url_api"]}{method}?owner_id={owner_id}&'
+                                          f'access_token={access_token}&v={v}&post_id={post_id}')
 
     def post(self, method, access_token, owner_id, message, v, post_id='', attachment=''):
         if post_id == '':
@@ -45,3 +46,7 @@ class API:
 
     def check_empty(self):
         return empty_check(self._response)
+
+    def delete(self, method, access_token, owner_id, post_id, v):
+        self._response = requests.delete(url=f'{self.cfg["base_url_api"]}{method}?owner_id={owner_id}&'
+                                          f'access_token={access_token}&v={v}&post_id={post_id}')

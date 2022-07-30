@@ -27,4 +27,8 @@ def test(pytest_session_start):
     comment_info = req.create_post_comment(post_info[0])
     assert my_page.check_comment(comment_info)
     my_page.like_post(post_info[0])
+    assert req.check_like(post_info[0])
+    assert req.delete_post(post_info[0])
+    assert my_page.check_post_deleted(post_info[0])
+
 

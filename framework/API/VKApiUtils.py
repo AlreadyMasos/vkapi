@@ -11,7 +11,8 @@ class VKApiUtils(API):
     method_post_create = 'wall.post'
     method_post_edit = 'wall.edit'
     method_comment_create = 'wall.createComment'
-
+    method_get_likes = 'wall.getLikes'
+    method_delete_post = 'wall.delete'
     v = "5.131"
 
     def create_post(self):
@@ -26,3 +27,12 @@ class VKApiUtils(API):
     def create_post_comment(self, post_id):
         self.post(self.method_comment_create, self.access_token, self.owner_id, self.comment, self.v, post_id)
         return self.get_json()['response']['comment_id'], self.comment
+
+    def check_like(self, post_id):
+        self.get(self.method_get_likes, self.access_token, self.owner_id, self.v, post_id)
+        return (self.get_json()['response']['count'] == 1 and
+                int(self.cfg['owner_id']) == self.get_json()['response']['users'][0]['uid'])
+
+    def delete_post(self, post_id):
+        self.post(self.method_delete_post, self.access_token, self.owner_id, v=self.v, post_id=post_id, message='')
+        return self.get_json()['response'] == 1
