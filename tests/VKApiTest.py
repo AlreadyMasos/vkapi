@@ -24,5 +24,7 @@ def test(pytest_session_start):
     assert my_page.check_created_post(post_info)
     new_mes = req.edit_post(post_info[0])
     #assert my_page.check_edited_post(post_info, new_mes)
-    comment_id = req.create_post_comment(post_info[0])
-    print(my_page.check_comment(comment_id))
+    comment_info = req.create_post_comment(post_info[0])
+    assert my_page.check_comment(comment_info)
+    my_page.like_post(post_info[0])
+

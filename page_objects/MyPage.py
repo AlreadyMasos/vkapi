@@ -9,6 +9,7 @@ class MyPage(BasePage):
     cfg = ConfigParser().get_config()
     all_posts_button = Button('xpath', '//li[@class="_wall_tab_all"]', 'all_posts_button')
 
+
     def __init__(self):
         super().__init__(self.all_posts_button.get_search_condition(),
                          self.all_posts_button.get_locator(),
@@ -34,13 +35,19 @@ class MyPage(BasePage):
         except RuntimeError:
             return False
 
-    def check_comment(self, comment_id):
+    def check_comment(self, comment_info):
         try:
             show_comments_button = Button('xpath', '//a[@class="replies_next replies_next_main replies_next_shown"]',
                                           'shw_cmnt_btn')
             show_comments_button.wait_for_is_visible()
             show_comments_button.click()
-            comment_text = Text('xpath', f'//div[@id="wpt{self.cfg["owner_id"]}_{comment_id}"]','comment_text')
-            return comment_text.get_text()
+            comment_text = Text('xpath', f'//div[@id="wpt{self.cfg["owner_id"]}_{comment_info[0]}"]', 'comment_text')
+            return comment_text.get_text() == comment_info[1]
         except TimeoutError:
             return False
+
+    def like_post(self, post_info):
+
+        like_button = Button('xpath', f'//div[@data-reaction-target-object="wall{self.cfg["owner_id"]}_{post_info}"]',
+                             'like_btn')
+        like_button.click()

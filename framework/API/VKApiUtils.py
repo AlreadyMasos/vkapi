@@ -25,4 +25,4 @@ class VKApiUtils(API):
 
     def create_post_comment(self, post_id):
         self.post(self.method_comment_create, self.access_token, self.owner_id, self.comment, self.v, post_id)
-        return self.get_json()['response']['comment_id'] == self.comment
+        return self.get_json()['response']['comment_id'], self.comment
