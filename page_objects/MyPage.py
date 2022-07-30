@@ -9,7 +9,6 @@ class MyPage(BasePage):
     cfg = ConfigParser().get_config()
     all_posts_button = Button('xpath', '//li[@class="_wall_tab_all"]', 'all_posts_button')
 
-
     def __init__(self):
         super().__init__(self.all_posts_button.get_search_condition(),
                          self.all_posts_button.get_locator(),
@@ -31,7 +30,7 @@ class MyPage(BasePage):
             post_with_id = Text('xpath', f'//div[@id="wpt{self.cfg["owner_id"]}_{post_info[0]}"]', "post_with_id]")
             post_with_id.wait_for_is_visible()
             link_photo = Link('xpath', f'//a[@href="/photo{self.cfg["owner_id"]}_{self.cfg["media_id"]}"]',"link")
-            return link_photo.is_displayed() and post_info[1] == new_message
+            return link_photo.is_displayed() and post_info[1] != new_message
         except RuntimeError:
             return False
 
