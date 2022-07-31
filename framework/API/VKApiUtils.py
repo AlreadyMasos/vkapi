@@ -3,6 +3,7 @@ from framework.utils.random_utils import create_random_string
 
 
 class VKApiUtils(API):
+
     first_message = create_random_string(10)
     second_message = create_random_string(15)
     comment = create_random_string(20)

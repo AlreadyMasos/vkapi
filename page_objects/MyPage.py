@@ -21,6 +21,7 @@ class MyPage(BasePage):
         try:
             post_with_id = Text('xpath', f'//div[@id="wpt{self.cfg["owner_id"]}_{post_id[0]}"]',"post_with_id]")
             post_with_id.wait_for_is_visible()
+            assert post_id[1] == post_with_id.get_text(), 'wrong post text'
             return post_with_id.is_displayed() and post_id[1] == post_with_id.get_text()
         except TimeoutError:
             return False
@@ -30,6 +31,7 @@ class MyPage(BasePage):
             post_with_id = Text('xpath', f'//div[@id="wpt{self.cfg["owner_id"]}_{post_info[0]}"]', "post_with_id]")
             post_with_id.wait_for_is_visible()
             link_photo = Link('xpath', f'//a[@href="/photo{self.cfg["owner_id"]}_{self.cfg["media_id"]}"]',"link")
+            assert post_info[1] != new_message, 'wrong post text after edit'
             return link_photo.is_displayed() and post_info[1] != new_message
         except RuntimeError:
             return False
@@ -41,6 +43,7 @@ class MyPage(BasePage):
             show_comments_button.wait_for_is_visible()
             show_comments_button.click()
             comment_text = Text('xpath', f'//div[@id="wpt{self.cfg["owner_id"]}_{comment_info[0]}"]', 'comment_text')
+            assert comment_text.get_text() == comment_info[1], 'wrong comment text'
             return comment_text.get_text() == comment_info[1]
         except TimeoutError:
             return False
@@ -50,3 +53,7 @@ class MyPage(BasePage):
         like_button = Button('xpath', f'//div[@data-reaction-target-object="wall{self.cfg["owner_id"]}_{post_info}"]',
                              'like_btn')
         like_button.click()
+
+    def check_post_deleted(self, post_id):
+        post = Text('xpath', f'//div[@id="post{self.cfg["owner_id"]}_{post_id}"]', 'post')
+        return post.is_exist()
