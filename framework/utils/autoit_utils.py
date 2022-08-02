@@ -1,7 +1,7 @@
 import autoit
 
 from framework.utils.config_parser import ConfigParser
-from framework.utils.dataset_parser import DataSetParser
+from framework.utils.data_parser import DataSetParser
 
 
 CONFIG = ConfigParser().get_config()
