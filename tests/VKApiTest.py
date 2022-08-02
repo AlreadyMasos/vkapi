@@ -21,9 +21,14 @@ def test(pytest_session_start, pytest_session_finish):
     assert my_page.is_opened(), 'my page not opened'
     req = VKApiUtils()
     post_info = req.create_post()
-    assert my_page.check_created_post(post_info), 'post not created'
+    post_created = my_page.check_created_post(post_info)
+    assert post_created[0], 'post not displayed'
+    assert post_created[1], 'wrong post text'
     new_mes = req.edit_post(post_info[0])
-    assert my_page.check_edited_post(post_info, new_mes), 'post not edited correctly'
+    check_edited_post = my_page.check_edited_post(post_info, new_mes)
+    assert check_edited_post[0], 'post not created'
+    assert check_edited_post[1], 'post text not correct'
+    assert check_edited_post[2], 'wrong picture'
     comment_info = req.create_post_comment(post_info[0])
     assert my_page.check_comment(comment_info), 'comment not created'
     my_page.like_post(post_info[0])

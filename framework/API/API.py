@@ -46,7 +46,3 @@ class API:
 
     def check_empty(self):
         return empty_check(self._response)
-
-    def delete(self, method, access_token, owner_id, post_id, v):
-        self._response = requests.delete(url=f'{self.cfg["base_url_api"]}{method}?owner_id={owner_id}&'
-                                          f'access_token={access_token}&v={v}&post_id={post_id}')

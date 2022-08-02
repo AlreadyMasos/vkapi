@@ -1,5 +1,4 @@
 {
-  "host": "",
   "browser": "chrome",
   "lang": "en",
   "implicitly_wait_sec": 0,
@@ -9,8 +8,8 @@
   "autoit_wait_sec" : 2,
   "base_url" : "https://vk.com",
   "base_url_api" : "http://api.vk.com/method/",
-  "owner_id" : "627657327",
-  "media_id" : "457252540",
-  "token" : "vk1.a.cseuU5RMDJxUbbxvUAzdZ7U_kramEsDKwGb4FeCs0OvjwF9L6c2AeYta7q9kFpPbYl6qszI-P87LkWjBGOITm5LsIGGfg_DSrKeane3unhPxVsdaCOTbpLCQSYS4tgaJm2jYwC3YmhQU5ab5Tiy6BE7fGHIEnq-ZkOGLCA7hMZbvHPh0fW782I6oipWeWTjq",
-  "win_handle" : "Открытие"
+  "token" : "",
+  "win_handle" : "Открытие",
+  "login" : "",
+  "password" : ""
 }

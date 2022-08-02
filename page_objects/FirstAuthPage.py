@@ -1,12 +1,12 @@
 from framework.pages.base_page import BasePage
 from framework.elements.text_box import TextBox
 from framework.elements.button import Button
-from framework.utils.data_parser import DataSetParser
+from framework.utils.cfg_parser import ConfigParser
 
 
 class FirstAuthPage(BasePage):
 
-    data = DataSetParser().get_dataset()
+    CFG = ConfigParser().get_config()
 
     login_input = TextBox('xpath', '//input[@class="VkIdForm__input"]', 'log_inp')
     login_button = Button('xpath', '//button[@class="FlatButton FlatButton--primary FlatButton--size-l '
@@ -18,7 +18,7 @@ class FirstAuthPage(BasePage):
                          self.login_input.get_name())
 
     def insert_login(self):
-        self.login_input.send_keys(self.data['login'])
+        self.login_input.send_keys(self.CFG['login'])
 
     def click_login_button(self):
         self.login_button.click()
